@@ -2,10 +2,13 @@ let express = require('express');
 let bodyParser = require('body-parser');
 let mongoose = require('mongoose');
 const ws = require('ws');
+const cors = require('cors');
 
 let apiRoutes = require('./router');
 
 let app = express();
+
+app.use(cors());
 
 const wsServer = new ws.Server({ noServer: true });
 wsServer.on('connection', socket => {
